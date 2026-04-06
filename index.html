@@ -81,10 +81,18 @@ html,body{background:#111114 !important;margin:0;padding:0}
 .pl-pill.on{background:var(--red);color:#fff;border-color:var(--red)}
 .pl-grid-wrap{padding:14px}
 .pl-count{font-size:11px;color:var(--muted);margin-bottom:12px;letter-spacing:0.03em}
+
+
+
+
 .pl-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
-@media(max-width:900px){.pl-grid{grid-template-columns:repeat(5,1fr);gap:6px}}
-@media(max-width:600px){.pl-grid{grid-template-columns:repeat(4,1fr);gap:5px}}
-@media(max-width:400px){.pl-grid{grid-template-columns:repeat(3,1fr);gap:4px}}
+@media(max-width:900px){.pl-grid{grid-template-columns:repeat(6,1fr);gap:6px}}
+@media(max-width:600px){.pl-grid{grid-template-columns:repeat(3,1fr);gap:8px}}
+@media(max-width:400px){.pl-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
+@media(max-width:600px){.pl-card-body{padding:8px 9px}.pl-card-name{font-size:12px}.pl-card-rarity{font-size:10px}.pl-card-num{font-size:10px}}
+@media(max-width:600px){.pl-hero{padding:12px 14px;gap:10px}.pl-logo{width:38px;height:38px}.pl-brand{font-size:18px}.pl-set-art{height:55px}.pl-brand-sub{display:none}.pl-set-row{margin-top:5px;padding-top:5px}}
+@media(max-width:600px){.pl-stat{padding:8px 4px}.pl-stat-val{font-size:15px}.pl-stat-lbl{font-size:8px}}
+@media(max-width:600px){.pl-pill{padding:5px 10px;font-size:11px}.pl-grid-wrap{padding:10px}}
 .pl-card{background:var(--dark2);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:all 0.2s;position:relative}
 .pl-card:hover{border-color:var(--red);transform:translateY(-3px);background:var(--dark3)}
 .pl-card img{width:100%;aspect-ratio:2.5/3.5;object-fit:cover;display:block;background:var(--dark3)}
@@ -104,7 +112,7 @@ html,body{background:#111114 !important;margin:0;padding:0}
 .modal-close{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);border:1px solid var(--border);color:#fff;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:10}
 .modal-btn{display:block;width:100%;padding:13px;background:var(--red);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.15s}
 .modal-btn:hover{background:var(--red-dark)}
-@media(max-width:600px){.modal{flex-direction:column;max-width:340px}.modal-img-col{flex:0 0 auto}.modal-body{padding:16px}}
+@media(max-width:600px){.modal{flex-direction:column;max-width:95vw;max-height:92vh}.modal-img-col{flex:0 0 auto;max-height:55vw;overflow:hidden}.modal-img-col img{width:100%;height:100%;object-fit:contain}.modal-body{padding:14px 16px}.modal-name{font-size:20px}.modal-btn{padding:10px}}
 .pl-empty{text-align:center;padding:40px;color:var(--muted);font-size:13px}
 </style>
 
@@ -158,319 +166,427 @@ html,body{background:#111114 !important;margin:0;padding:0}
 </div>
 
 <script>
-(function(){
-var _0x1a2b=["CmNvbnN0IENBUkRTPVsKICB7bjoxLG5hbWU6IkVyaWthJ3MgT2RkaXNoIixyOiJDb21tb24ifSwKICB7"+
-"bjoyLG5hbWU6IkVyaWthJ3MgR2xvb20iLHI6IlVuY29tbW9uIn0sCiAge246MyxuYW1lOiJFcmlrYSdz"+
-"IFZpbGVwbHVtZSBleCIscjoiRG91YmxlIFJhcmUifSwKICB7bjo0LG5hbWU6IkVyaWthJ3MgQmVsbHNw"+
-"cm91dCIscjoiQ29tbW9uIn0sCiAge246NSxuYW1lOiJFcmlrYSdzIFdlZXBpbmJlbGwiLHI6IlVuY29t"+
-"bW9uIn0sCiAge246NixuYW1lOiJFcmlrYSdzIFZpY3RyZWViZWwiLHI6IlJhcmUifSwKICB7bjo3LG5h"+
-"bWU6IkVyaWthJ3MgVGFuZ2VsYSIscjoiQ29tbW9uIn0sCiAge246OCxuYW1lOiJDaGlrb3JpdGEiLHI6"+
-"IkNvbW1vbiJ9LAogIHtuOjksbmFtZToiQmF5bGVlZiIscjoiVW5jb21tb24ifSwKICB7bjoxMCxuYW1l"+
-"OiJNZWdhIE1lZ2FuaXVtIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjExLG5hbWU6Ild1cm1wbGUi"+
-"LHI6IkNvbW1vbiJ9LAogIHtuOjEyLG5hbWU6IlNpbGNvb24iLHI6IkNvbW1vbiJ9LAogIHtuOjEzLG5h"+
-"bWU6IkJlYXV0aWZseSIscjoiVW5jb21tb24ifSwKICB7bjoxNCxuYW1lOiJDYXNjb29uIixyOiJDb21t"+
-"b24ifSwKICB7bjoxNSxuYW1lOiJEdXN0b3giLHI6IlVuY29tbW9uIn0sCiAge246MTYsbmFtZToiQnVk"+
-"ZXciLHI6IkNvbW1vbiJ9LAogIHtuOjE3LG5hbWU6IkdydWJiaW4iLHI6IkNvbW1vbiJ9LAogIHtuOjE4"+
-"LG5hbWU6IlRlYW0gUm9ja2V0J3MgVGFyb3VudHVsYSIscjoiQ29tbW9uIn0sCiAge246MTksbmFtZToi"+
-"VGVhbSBSb2NrZXQncyBTcGlkb3BzIixyOiJSYXJlIn0sCiAge246MjAsbmFtZToiQ2hhcm1hbmRlciIs"+
-"cjoiQ29tbW9uIn0sCiAge246MjEsbmFtZToiQ2hhcm1lbGVvbiIscjoiVW5jb21tb24ifSwKICB7bjoy"+
-"MixuYW1lOiJNZWdhIENoYXJpemFyZCBZIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjIzLG5hbWU6"+
-"IkV0aGFuJ3MgU2x1Z21hIixyOiJDb21tb24ifSwKICB7bjoyNCxuYW1lOiJFdGhhbidzIE1hZ2Nhcmdv"+
-"IixyOiJSYXJlIn0sCiAge246MjUsbmFtZToiRW50ZWkiLHI6IlJhcmUifSwKICB7bjoyNixuYW1lOiJF"+
-"dGhhbidzIEhvLU9oIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjI3LG5hbWU6Ik51bWVsIixyOiJD"+
-"b21tb24ifSwKICB7bjoyOCxuYW1lOiJDYW1lcnVwdCIscjoiVW5jb21tb24ifSwKICB7bjoyOSxuYW1l"+
-"OiJUZXBpZyIscjoiQ29tbW9uIn0sCiAge246MzAsbmFtZToiUGlnbml0ZSIscjoiVW5jb21tb24ifSwK"+
-"ICB7bjozMSxuYW1lOiJNZWdhIEVtYm9hciBleCIscjoiRG91YmxlIFJhcmUifSwKICB7bjozMixuYW1l"+
-"OiJOJ3MgRGFydW1ha2EiLHI6IkNvbW1vbiJ9LAogIHtuOjMzLG5hbWU6Ik4ncyBEYXJtYW5pdGFuIixy"+
-"OiJVbmNvbW1vbiJ9LAogIHtuOjM0LG5hbWU6IlNhbGFuZGl0IixyOiJDb21tb24ifSwKICB7bjozNSxu"+
-"YW1lOiJTYWxhenpsZSIscjoiVW5jb21tb24ifSwKICB7bjozNixuYW1lOiJTY29yYnVubnkiLHI6IkNv"+
-"bW1vbiJ9LAogIHtuOjM3LG5hbWU6IlJhYm9vdCIscjoiQ29tbW9uIn0sCiAge246MzgsbmFtZToiQ2lu"+
-"ZGVyYWNlIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjM5LG5hbWU6IlBzeWR1Y2siLHI6IkNvbW1v"+
-"biJ9LAogIHtuOjQwLG5hbWU6IkdvbGR1Y2siLHI6IlVuY29tbW9uIn0sCiAge246NDEsbmFtZToiVG90"+
-"b2RpbGUiLHI6IkNvbW1vbiJ9LAogIHtuOjQyLG5hbWU6IkNyb2NvbmF3IixyOiJVbmNvbW1vbiJ9LAog"+
-"IHtuOjQzLG5hbWU6Ik1lZ2EgRmVyYWxpZ2F0ciBleCIscjoiRG91YmxlIFJhcmUifSwKICB7bjo0NCxu"+
-"YW1lOiJTbmVhc2VsIixyOiJDb21tb24ifSwKICB7bjo0NSxuYW1lOiJXZWF2aWxlIixyOiJVbmNvbW1v"+
-"biJ9LAogIHtuOjQ2LG5hbWU6IlNub3J1bnQiLHI6IkNvbW1vbiJ9LAogIHtuOjQ3LG5hbWU6Ik1lZ2Eg"+
-"RnJvc2xhc3MgZXgiLHI6IkRvdWJsZSBSYXJlIn0sCiAge246NDgsbmFtZToiUmVnaWNlIGV4IixyOiJE"+
-"b3VibGUgUmFyZSJ9LAogIHtuOjQ5LG5hbWU6Ik4ncyBWYW5pbGxpdGUiLHI6IkNvbW1vbiJ9LAogIHtu"+
-"OjUwLG5hbWU6Ik4ncyBWYW5pbGxpc2giLHI6IkNvbW1vbiJ9LAogIHtuOjUxLG5hbWU6Ik4ncyBWYW5p"+
-"bGx1eGUiLHI6IlVuY29tbW9uIn0sCiAge246NTIsbmFtZToiU25vbSIscjoiQ29tbW9uIn0sCiAge246"+
-"NTMsbmFtZToiRnJvc21vdGgiLHI6IlVuY29tbW9uIn0sCiAge246NTQsbmFtZToiR2xhc3RyaWVyIixy"+
-"OiJVbmNvbW1vbiJ9LAogIHtuOjU1LG5hbWU6IlBpa2FjaHUiLHI6IkNvbW1vbiJ9LAogIHtuOjU2LG5h"+
-"bWU6IlJhaWNodSIscjoiVW5jb21tb24ifSwKICB7bjo1NyxuYW1lOiJQaWthY2h1IGV4IixyOiJEb3Vi"+
-"bGUgUmFyZSJ9LAogIHtuOjU4LG5hbWU6IlZvbHRvcmIgZXgiLHI6IkRvdWJsZSBSYXJlIn0sCiAge246"+
-"NTksbmFtZToiVHluYW1vIixyOiJDb21tb24ifSwKICB7bjo2MCxuYW1lOiJFZWxla3RyaWsiLHI6IlVu"+
-"Y29tbW9uIn0sCiAge246NjEsbmFtZToiTWVnYSBFZWxla3Ryb3NzIGV4IixyOiJEb3VibGUgUmFyZSJ9"+
-"LAogIHtuOjYyLG5hbWU6IlN0dW5maXNrIixyOiJDb21tb24ifSwKICB7bjo2MyxuYW1lOiJIZWxpb3B0"+
-"aWxlIixyOiJDb21tb24ifSwKICB7bjo2NCxuYW1lOiJIZWxpb2xpc2siLHI6IlVuY29tbW9uIn0sCiAg"+
-"e246NjUsbmFtZToiQ2hhcmphYnVnIixyOiJDb21tb24ifSwKICB7bjo2NixuYW1lOiJWaWthdm9sdCIs"+
-"cjoiVW5jb21tb24ifSwKICB7bjo2NyxuYW1lOiJUYXB1IEtva28iLHI6IlJhcmUifSwKICB7bjo2OCxu"+
-"YW1lOiJIb3AncyBQaW5jdXJjaGluIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjY5LG5hbWU6Iklv"+
-"bm8ncyBUYWRidWxiIixyOiJDb21tb24ifSwKICB7bjo3MCxuYW1lOiJJb25vJ3MgQmVsbGlib2x0IGV4"+
-"IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjcxLG5hbWU6Iklvbm8ncyBXYXR0cmVsIixyOiJDb21tb24i"+
-"fSwKICB7bjo3MixuYW1lOiJJb25vJ3MgS2lsb3dhdHRyZWwiLHI6IlJhcmUifSwKICB7bjo3MyxuYW1l"+
-"OiJNaXJhaWRvbiBleCIscjoiRG91YmxlIFJhcmUifSwKICB7bjo3NCxuYW1lOiJDbGVmYWlyeSIscjoi"+
-"Q29tbW9uIn0sCiAge246NzUsbmFtZToiQ2xlZmFibGUiLHI6IlVuY29tbW9uIn0sCiAge246NzYsbmFt"+
-"ZToiTGlsbGllJ3MgQ2xlZmFpcnkgZXgiLHI6IkRvdWJsZSBSYXJlIn0sCiAge246NzcsbmFtZToiVGVh"+
-"bSBSb2NrZXQncyBFeGVnZ2N1dGUiLHI6IkNvbW1vbiJ9LAogIHtuOjc4LG5hbWU6IlRlYW0gUm9ja2V0"+
-"J3MgRXhlZ2d1dG9yIixyOiJSYXJlIn0sCiAge246NzksbmFtZToiVGVhbSBSb2NrZXQncyBNZXd0d28g"+
-"ZXgiLHI6IkRvdWJsZSBSYXJlIn0sCiAge246ODAsbmFtZToiVG9nZXBpIixyOiJDb21tb24ifSwKICB7"+
-"bjo4MSxuYW1lOiJUb2dldGljIixyOiJDb21tb24ifSwKICB7bjo4MixuYW1lOiJUb2dla2lzcyIscjoi"+
-"UmFyZSJ9LAogIHtuOjgzLG5hbWU6Ik1hcmlsbCIscjoiQ29tbW9uIn0sCiAge246ODQsbmFtZToiQXp1"+
-"bWFyaWxsIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjg1LG5hbWU6Ik1pc2RyZWF2dXMiLHI6IkNv"+
-"bW1vbiJ9LAogIHtuOjg2LG5hbWU6Ik1pc21hZ2l1cyIscjoiUmFyZSJ9LAogIHtuOjg3LG5hbWU6IlJh"+
-"bHRzIixyOiJDb21tb24ifSwKICB7bjo4OCxuYW1lOiJLaXJsaWEiLHI6IkNvbW1vbiJ9LAogIHtuOjg5"+
-"LG5hbWU6Ik1lZ2EgR2FyZGV2b2lyIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjkwLG5hbWU6IlNo"+
-"dXBwZXQiLHI6IkNvbW1vbiJ9LAogIHtuOjkxLG5hbWU6IkJhbmV0dGUiLHI6IlVuY29tbW9uIn0sCiAg"+
-"e246OTIsbmFtZToiUm90b20iLHI6IkNvbW1vbiJ9LAogIHtuOjkzLG5hbWU6IlN3aXJsaXgiLHI6IkNv"+
-"bW1vbiJ9LAogIHtuOjk0LG5hbWU6IlNsdXJwdWZmIixyOiJVbmNvbW1vbiJ9LAogIHtuOjk1LG5hbWU6"+
-"IkhvcCdzIFBoYW50dW1wIixyOiJDb21tb24ifSwKICB7bjo5NixuYW1lOiJIb3AncyBUcmV2ZW5hbnQi"+
-"LHI6IlJhcmUifSwKICB7bjo5NyxuYW1lOiJUZWFtIFJvY2tldCdzIE1pbWlreXUiLHI6IlVuY29tbW9u"+
-"In0sCiAge246OTgsbmFtZToiU3BlY3RyaWVyIixyOiJSYXJlIn0sCiAge246OTksbmFtZToiTXVua2lk"+
-"b3JpIixyOiJSYXJlIn0sCiAge246MTAwLG5hbWU6IlRlYW0gUm9ja2V0J3MgRGlnbGV0dCIscjoiQ29t"+
-"bW9uIn0sCiAge246MTAxLG5hbWU6IlRlYW0gUm9ja2V0J3MgRHVndHJpbyIscjoiVW5jb21tb24ifSwK"+
-"ICB7bjoxMDIsbmFtZToiSGl0bW9udG9wIixyOiJDb21tb24ifSwKICB7bjoxMDMsbmFtZToiTWVkaXRp"+
-"dGUiLHI6IkNvbW1vbiJ9LAogIHtuOjEwNCxuYW1lOiJNZWRpY2hhbSIscjoiQ29tbW9uIn0sCiAge246"+
-"MTA1LG5hbWU6Ikx1bmF0b25lIixyOiJSYXJlIn0sCiAge246MTA2LG5hbWU6IlNvbHJvY2siLHI6IlVu"+
-"Y29tbW9uIn0sCiAge246MTA3LG5hbWU6IlJlZ2lyb2NrIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtu"+
-"OjEwOCxuYW1lOiJHcm91ZG9uIixyOiJSYXJlIn0sCiAge246MTA5LG5hbWU6IkN5bnRoaWEncyBHaWJs"+
-"ZSIscjoiQ29tbW9uIn0sCiAge246MTEwLG5hbWU6IkN5bnRoaWEncyBHYWJpdGUiLHI6IlVuY29tbW9u"+
-"In0sCiAge246MTExLG5hbWU6IkN5bnRoaWEncyBHYXJjaG9tcCBleCIscjoiRG91YmxlIFJhcmUifSwK"+
-"ICB7bjoxMTIsbmFtZToiUmlvbHUiLHI6IkNvbW1vbiJ9LAogIHtuOjExMyxuYW1lOiJNZWdhIEx1Y2Fy"+
-"aW8gZXgiLHI6IkRvdWJsZSBSYXJlIn0sCiAge246MTE0LG5hbWU6IlN0dW5maXNrIGV4IixyOiJEb3Vi"+
-"bGUgUmFyZSJ9LAogIHtuOjExNSxuYW1lOiJQYW5jaGFtIixyOiJDb21tb24ifSwKICB7bjoxMTYsbmFt"+
-"ZToiTWVnYSBIYXdsdWNoYSBleCIscjoiRG91YmxlIFJhcmUifSwKICB7bjoxMTcsbmFtZToiQ2FyYmlu"+
-"ayIscjoiVW5jb21tb24ifSwKICB7bjoxMTgsbmFtZToiUm9seWNvbHkiLHI6IkNvbW1vbiJ9LAogIHtu"+
-"OjExOSxuYW1lOiJDYXJrb2wiLHI6IkNvbW1vbiJ9LAogIHtuOjEyMCxuYW1lOiJDb2Fsb3NzYWwiLHI6"+
-"IlJhcmUifSwKICB7bjoxMjEsbmFtZToiS29yYWlkb24gZXgiLHI6IkRvdWJsZSBSYXJlIn0sCiAge246"+
-"MTIyLG5hbWU6Ik9raWRvZ2kiLHI6IlJhcmUifSwKICB7bjoxMjMsbmFtZToiR2FzdGx5IixyOiJDb21t"+
-"b24ifSwKICB7bjoxMjQsbmFtZToiSGF1bnRlciIscjoiVW5jb21tb24ifSwKICB7bjoxMjUsbmFtZToi"+
-"TWVnYSBHZW5nYXIgZXgiLHI6IkRvdWJsZSBSYXJlIn0sCiAge246MTI2LG5hbWU6IlRlYW0gUm9ja2V0"+
-"J3MgTXVya3JvdyIscjoiQ29tbW9uIn0sCiAge246MTI3LG5hbWU6IlRlYW0gUm9ja2V0J3MgSG9uY2hr"+
-"cm93IixyOiJSYXJlIn0sCiAge246MTI4LG5hbWU6IlBvb2NoeWVuYSIscjoiQ29tbW9uIn0sCiAge246"+
-"MTI5LG5hbWU6Ik1pZ2h0eWVuYSIscjoiVW5jb21tb24ifSwKICB7bjoxMzAsbmFtZToiR2FsYXJpYW4g"+
-"WmlnemFnb29uIixyOiJDb21tb24ifSwKICB7bjoxMzEsbmFtZToiR2FsYXJpYW4gTGlub29uZSIscjoi"+
-"VW5jb21tb24ifSwKICB7bjoxMzIsbmFtZToiR2FsYXJpYW4gT2JzdGFnb29uIixyOiJVbmNvbW1vbiJ9"+
-"LAogIHtuOjEzMyxuYW1lOiJDeW50aGlhJ3MgU3Bpcml0b21iIixyOiJDb21tb24ifSwKICB7bjoxMzQs"+
-"bmFtZToiU2NyYWdneSIscjoiQ29tbW9uIn0sCiAge246MTM1LG5hbWU6Ik1lZ2EgU2NyYWZ0eSBleCIs"+
-"cjoiRG91YmxlIFJhcmUifSwKICB7bjoxMzYsbmFtZToiTidzIFpvcnVhIixyOiJDb21tb24ifSwKICB7"+
-"bjoxMzcsbmFtZToiTidzIFpvcm9hcmsgZXgiLHI6IkRvdWJsZSBSYXJlIn0sCiAge246MTM4LG5hbWU6"+
-"IlZ1bGxhYnkiLHI6IkNvbW1vbiJ9LAogIHtuOjEzOSxuYW1lOiJNYW5kaWJ1enogZXgiLHI6IkRvdWJs"+
-"ZSBSYXJlIn0sCiAge246MTQwLG5hbWU6IlBhbmdvcm8iLHI6IlVuY29tbW9uIn0sCiAge246MTQxLG5h"+
-"bWU6Ikhvb3BhIixyOiJSYXJlIn0sCiAge246MTQyLG5hbWU6IkZlemFuZGlwaXRpIGV4IixyOiJEb3Vi"+
-"bGUgUmFyZSJ9LAogIHtuOjE0MyxuYW1lOiJQZWNoYXJ1bnQiLHI6IlJhcmUifSwKICB7bjoxNDQsbmFt"+
-"ZToiTWF3aWxlIixyOiJVbmNvbW1vbiJ9LAogIHtuOjE0NSxuYW1lOiJSZWdpc3RlZWwgZXgiLHI6IkRv"+
-"dWJsZSBSYXJlIn0sCiAge246MTQ2LG5hbWU6IlBhd25pYXJkIixyOiJDb21tb24ifSwKICB7bjoxNDcs"+
-"bmFtZToiQmlzaGFycCIscjoiVW5jb21tb24ifSwKICB7bjoxNDgsbmFtZToiS2luZ2FtYml0IixyOiJS"+
-"YXJlIn0sCiAge246MTQ5LG5hbWU6IlRvZ2VkZW1hcnUgZXgiLHI6IkRvdWJsZSBSYXJlIn0sCiAge246"+
-"MTUwLG5hbWU6IkRyYXRpbmkiLHI6IkNvbW1vbiJ9LAogIHtuOjE1MSxuYW1lOiJEcmFnb25haXIiLHI6"+
-"IlVuY29tbW9uIn0sCiAge246MTUyLG5hbWU6Ik1lZ2EgRHJhZ29uaXRlIGV4IixyOiJEb3VibGUgUmFy"+
-"ZSJ9LAogIHtuOjE1MyxuYW1lOiJSYXlxdWF6YSIscjoiUmFyZSJ9LAogIHtuOjE1NCxuYW1lOiJOJ3Mg"+
-"UmVzaGlyYW0iLHI6IlJhcmUifSwKICB7bjoxNTUsbmFtZToiTidzIFpla3JvbSIscjoiUmFyZSJ9LAog"+
-"IHtuOjE1NixuYW1lOiJOb2liYXQiLHI6IkNvbW1vbiJ9LAogIHtuOjE1NyxuYW1lOiJOb2l2ZXJuIixy"+
-"OiJVbmNvbW1vbiJ9LAogIHtuOjE1OCxuYW1lOiJEcmVlcHkiLHI6IkNvbW1vbiJ9LAogIHtuOjE1OSxu"+
-"YW1lOiJEcmFrbG9hayIscjoiVW5jb21tb24ifSwKICB7bjoxNjAsbmFtZToiRHJhZ2FwdWx0IGV4Iixy"+
-"OiJEb3VibGUgUmFyZSJ9LAogIHtuOjE2MSxuYW1lOiJUZWFtIFJvY2tldCdzIE1lb3d0aCIscjoiQ29t"+
-"bW9uIn0sCiAge246MTYyLG5hbWU6IlRlYW0gUm9ja2V0J3MgS2FuZ2Fza2hhbiBleCIscjoiRG91Ymxl"+
-"IFJhcmUifSwKICB7bjoxNjMsbmFtZToiTGFycnkncyBEdW5zcGFyY2UiLHI6IkNvbW1vbiJ9LAogIHtu"+
-"OjE2NCxuYW1lOiJMYXJyeSdzIER1ZHVuc3BhcmNlIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjE2"+
-"NSxuYW1lOiJTa2l0dHkiLHI6IkNvbW1vbiJ9LAogIHtuOjE2NixuYW1lOiJEZWxjYXR0eSIscjoiVW5j"+
-"b21tb24ifSwKICB7bjoxNjcsbmFtZToiWmFuZ29vc2UgZXgiLHI6IkRvdWJsZSBSYXJlIn0sCiAge246"+
-"MTY4LG5hbWU6IkxhcnJ5J3MgU3Rhcmx5IixyOiJDb21tb24ifSwKICB7bjoxNjksbmFtZToiTGFycnkn"+
-"cyBTdGFyYXZpYSIscjoiQ29tbW9uIn0sCiAge246MTcwLG5hbWU6IkxhcnJ5J3MgU3RhcmFwdG9yIixy"+
-"OiJSYXJlIn0sCiAge246MTcxLG5hbWU6IkZhbiBSb3RvbSIscjoiQ29tbW9uIn0sCiAge246MTcyLG5h"+
-"bWU6Ik1lZ2EgQXVkaW5vIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjE3MyxuYW1lOiJMYXJyeSdz"+
-"IFJ1ZmZsZXQiLHI6IkNvbW1vbiJ9LAogIHtuOjE3NCxuYW1lOiJMYXJyeSdzIEJyYXZpYXJ5IixyOiJV"+
-"bmNvbW1vbiJ9LAogIHtuOjE3NSxuYW1lOiJMYXJyeSdzIEtvbWFsYSIscjoiQ29tbW9uIn0sCiAge246"+
-"MTc2LG5hbWU6IkRyYW1wYSIscjoiVW5jb21tb24ifSwKICB7bjoxNzcsbmFtZToiSG9wJ3MgQ3JhbW9y"+
-"YW50IixyOiJVbmNvbW1vbiJ9LAogIHtuOjE3OCxuYW1lOiJUZXJhcGFnb3MiLHI6IlJhcmUifSwKICB7"+
-"bjoxNzksbmFtZToiVGVyYXBhZ29zIGV4IixyOiJEb3VibGUgUmFyZSJ9LAogIHtuOjE4MCxuYW1lOiJB"+
-"Y2Vyb2xhJ3MgTWlzY2hpZWYiLHI6IkNvbW1vbiJ9LAogIHtuOjE4MSxuYW1lOiJBaXIgQmFsbG9vbiIs"+
-"cjoiVW5jb21tb24ifSwKICB7bjoxODIsbmFtZToiQW50aGVhICYgQ29uY29yZGlhIixyOiJDb21tb24i"+
-"fSwKICB7bjoxODMsbmFtZToiQm9zcydzIE9yZGVycyIscjoiVW5jb21tb24ifSwKICB7bjoxODQsbmFt"+
-"ZToiQnVkZHktQnVkZHkgUG9mZmluIixyOiJVbmNvbW1vbiJ9LAogIHtuOjE4NSxuYW1lOiJDYW5hcmki"+
-"LHI6IlVuY29tbW9uIn0sCiAge246MTg2LG5hbWU6IkNvdW50ZXIgR2FpbiIscjoiQ29tbW9uIn0sCiAg"+
-"e246MTg3LG5hbWU6IkZpZ2h0aW5nIEdvbmciLHI6IlVuY29tbW9uIn0sCiAge246MTg4LG5hbWU6IkZv"+
-"cmVzdCBvZiBWaXRhbGl0eSIscjoiVW5jb21tb24ifSwKICB7bjoxODksbmFtZToiR2xhc3MgVHJ1bXBl"+
-"dCIscjoiQ29tbW9uIn0sCiAge246MTkwLG5hbWU6IklyaXMncyBGaWdodGluZyBTcGlyaXQiLHI6IkNv"+
-"bW1vbiJ9LAogIHtuOjE5MSxuYW1lOiJMaWdodCBCYWxsIixyOiJVbmNvbW1vbiJ9LAogIHtuOjE5Mixu"+
-"YW1lOiJMaWxsaWUncyBEZXRlcm1pbmF0aW9uIixyOiJVbmNvbW1vbiJ9LAogIHtuOjE5MyxuYW1lOiJN"+
-"ZWdhIFNpZ25hbCIscjoiQ29tbW9uIn0sCiAge246MTk0LG5hbWU6Ik15c3RlcnkgR2FyZGVuIixyOiJV"+
-"bmNvbW1vbiJ9LAogIHtuOjE5NSxuYW1lOiJOJ3MgUFAgVXAiLHI6IkNvbW1vbiJ9LAogIHtuOjE5Nixu"+
-"YW1lOiJOaWdodCBTdHJldGNoZXIiLHI6IlVuY29tbW9uIn0sCiAge246MTk3LG5hbWU6Ik5pZ2h0dGlt"+
-"ZSBNaW5lIixyOiJVbmNvbW1vbiJ9LAogIHtuOjE5OCxuYW1lOiJQb2tlIFBhZCIscjoiVW5jb21tb24i"+
-"fSwKICB7bjoxOTksbmFtZToiUHJlbWl1bSBQb3dlciBQcm8iLHI6IkNvbW1vbiJ9LAogIHtuOjIwMCxu"+
-"YW1lOiJTdXJmZXIiLHI6IkNvbW1vbiJ9LAogIHtuOjIwMSxuYW1lOiJUZWFtIFJvY2tldCdzIEFyY2hl"+
-"ciIscjoiQ29tbW9uIn0sCiAge246MjAyLG5hbWU6IlRlYW0gUm9ja2V0J3MgQXJpYW5hIixyOiJVbmNv"+
-"bW1vbiJ9LAogIHtuOjIwMyxuYW1lOiJUZWFtIFJvY2tldCdzIEZhY3RvcnkiLHI6IlVuY29tbW9uIn0s"+
-"CiAge246MjA0LG5hbWU6IlRlYW0gUm9ja2V0J3MgR2lvdmFubmkiLHI6IlVuY29tbW9uIn0sCiAge246"+
-"MjA1LG5hbWU6IlRlYW0gUm9ja2V0J3MgR3JlYXQgQmFsbCIscjoiQ29tbW9uIn0sCiAge246MjA2LG5h"+
-"bWU6IlRlYW0gUm9ja2V0J3MgSHlwbm90aXplciIscjoiVW5jb21tb24ifSwKICB7bjoyMDcsbmFtZToi"+
-"VGVhbSBSb2NrZXQncyBQZXRyZWwiLHI6IlVuY29tbW9uIn0sCiAge246MjA4LG5hbWU6IlRlYW0gUm9j"+
-"a2V0J3MgUHJvdG9uIixyOiJDb21tb24ifSwKICB7bjoyMDksbmFtZToiVGVhbSBSb2NrZXQncyBUcmFu"+
-"c2NlaXZlciIscjoiVW5jb21tb24ifSwKICB7bjoyMTAsbmFtZToiVGVhbSBSb2NrZXQncyBXYXRjaHRv"+
-"d2VyIixyOiJVbmNvbW1vbiJ9LAogIHtuOjIxMSxuYW1lOiJUaGljayBTY2FsZSIscjoiQ29tbW9uIn0s"+
-"CiAge246MjEyLG5hbWU6IlRvb2wgU2NyYXBwZXIiLHI6IlVuY29tbW9uIn0sCiAge246MjEzLG5hbWU6"+
-"IlVsdHJhIEJhbGwiLHI6IlVuY29tbW9uIn0sCiAge246MjE0LG5hbWU6IlVyYmFpbiIscjoiQ29tbW9u"+
-"In0sCiAge246MjE1LG5hbWU6IldhaXRyZXNzIixyOiJVbmNvbW1vbiJ9LAogIHtuOjIxNixuYW1lOiJQ"+
-"cmlzbSBFbmVyZ3kiLHI6IlVuY29tbW9uIn0sCiAge246MjE3LG5hbWU6IlRlYW0gUm9ja2V0J3MgRW5l"+
-"cmd5IixyOiJVbmNvbW1vbiJ9LAogIHtuOjIxOCxuYW1lOiJFcmlrYSdzIFRhbmdlbGEiLHI6IklsbHVz"+
-"dHJhdGlvbiBSYXJlIn0sCiAge246MjE5LG5hbWU6IkJlYXV0aWZseSIscjoiSWxsdXN0cmF0aW9uIFJh"+
-"cmUifSwKICB7bjoyMjAsbmFtZToiRHVzdG94IixyOiJJbGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjIy"+
-"MSxuYW1lOiJCdWRldyIscjoiSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyMjIsbmFtZToiRXRoYW4n"+
-"cyBNYWdjYXJnbyIscjoiSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyMjMsbmFtZToiTnVtZWwiLHI6"+
-"IklsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246MjI0LG5hbWU6IlNhbGF6emxlIixyOiJJbGx1c3RyYXRp"+
-"b24gUmFyZSJ9LAogIHtuOjIyNSxuYW1lOiJTY29yYnVubnkiLHI6IklsbHVzdHJhdGlvbiBSYXJlIn0s"+
-"CiAge246MjI2LG5hbWU6IlBzeWR1Y2siLHI6IklsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246MjI3LG5h"+
-"bWU6IlNub3J1bnQiLHI6IklsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246MjI4LG5hbWU6IldlYXZpbGUi"+
-"LHI6IklsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246MjI5LG5hbWU6IkhlbGlvbGlzayIscjoiSWxsdXN0"+
-"cmF0aW9uIFJhcmUifSwKICB7bjoyMzAsbmFtZToiVmlrYXZvbHQiLHI6IklsbHVzdHJhdGlvbiBSYXJl"+
-"In0sCiAge246MjMxLG5hbWU6Iklvbm8ncyBXYXR0cmVsIixyOiJJbGx1c3RyYXRpb24gUmFyZSJ9LAog"+
-"IHtuOjIzMixuYW1lOiJNYXJpbGwiLHI6IklsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246MjMzLG5hbWU6"+
-"Ik1pc2RyZWF2dXMiLHI6IklsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246MjM0LG5hbWU6IkJhbmV0dGUi"+
-"LHI6IklsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246MjM1LG5hbWU6IlRvZ2VraXNzIixyOiJJbGx1c3Ry"+
-"YXRpb24gUmFyZSJ9LAogIHtuOjIzNixuYW1lOiJTbHVycHVmZiIscjoiSWxsdXN0cmF0aW9uIFJhcmUi"+
-"fSwKICB7bjoyMzcsbmFtZToiSG9wJ3MgVHJldmVuYW50IixyOiJJbGx1c3RyYXRpb24gUmFyZSJ9LAog"+
-"IHtuOjIzOCxuYW1lOiJUZWFtIFJvY2tldCdzIE1pbWlreXUiLHI6IklsbHVzdHJhdGlvbiBSYXJlIn0s"+
-"CiAge246MjM5LG5hbWU6IlRlYW0gUm9ja2V0J3MgRHVndHJpbyIscjoiSWxsdXN0cmF0aW9uIFJhcmUi"+
-"fSwKICB7bjoyNDAsbmFtZToiSGl0bW9udG9wIixyOiJJbGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI0"+
-"MSxuYW1lOiJNZWRpY2hhbSIscjoiSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyNDIsbmFtZToiQ2Fy"+
-"YmluayIscjoiSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyNDMsbmFtZToiTWlnaHR5ZW5hIixyOiJJ"+
-"bGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI0NCxuYW1lOiJDeW50aGlhJ3MgU3Bpcml0b21iIixyOiJJ"+
-"bGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI0NSxuYW1lOiJHYWxhcmlhbiBPYnN0YWdvb24iLHI6Ikls"+
-"bHVzdHJhdGlvbiBSYXJlIn0sCiAge246MjQ2LG5hbWU6Ik1hd2lsZSIscjoiSWxsdXN0cmF0aW9uIFJh"+
-"cmUifSwKICB7bjoyNDcsbmFtZToiRHJlZXB5IixyOiJJbGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI0"+
-"OCxuYW1lOiJEcmFrbG9hayIscjoiSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyNDksbmFtZToiTGFy"+
-"cnkncyBTdGFyYXB0b3IiLHI6IklsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246MjUwLG5hbWU6IkZhbiBS"+
-"b3RvbSIscjoiSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyNTEsbmFtZToiU3ByaWdhdGl0byBleCIs"+
-"cjoiVWx0cmEgUmFyZSJ9LAogIHtuOjI1MixuYW1lOiJTdHVuZmlzayBleCIscjoiVWx0cmEgUmFyZSJ9"+
-"LAogIHtuOjI1MyxuYW1lOiJNZWdhIEF1ZGlubyBleCIscjoiVWx0cmEgUmFyZSJ9LAogIHtuOjI1NCxu"+
-"YW1lOiJBbnRoZWEgJiBDb25jb3JkaWEiLHI6IlVsdHJhIFJhcmUifSwKICB7bjoyNTUsbmFtZToiQmxh"+
-"Y2sgQmVsdCdzIFRyYWluaW5nIixyOiJVbHRyYSBSYXJlIn0sCiAge246MjU2LG5hbWU6IkJvc3MncyBP"+
-"cmRlcnMgKENvcmJlYXUpIixyOiJVbHRyYSBSYXJlIn0sCiAge246MjU3LG5hbWU6IkNhbmFyaSIscjoi"+
-"VWx0cmEgUmFyZSJ9LAogIHtuOjI1OCxuYW1lOiJDaGVyZW4iLHI6IlVsdHJhIFJhcmUifSwKICB7bjoy"+
-"NTksbmFtZToiQ291bnRlciBHYWluIixyOiJVbHRyYSBSYXJlIn0sCiAge246MjYwLG5hbWU6IkdsYXNz"+
-"IFRydW1wZXQiLHI6IlVsdHJhIFJhcmUifSwKICB7bjoyNjEsbmFtZToiSmFtbWluZyBUb3dlciIscjoi"+
-"VWx0cmEgUmFyZSJ9LAogIHtuOjI2MixuYW1lOiJOJ3MgUFAgVXAiLHI6IlVsdHJhIFJhcmUifSwKICB7"+
-"bjoyNjMsbmFtZToiVGVhbSBSb2NrZXQncyBUcmFuc2NlaXZlciIscjoiVWx0cmEgUmFyZSJ9LAogIHtu"+
-"OjI2NCxuYW1lOiJVbHRyYSBCYWxsIixyOiJVbHRyYSBSYXJlIn0sCiAge246MjY1LG5hbWU6Ik1lZ2Eg"+
-"RnJvc2xhc3MgZXgiLHI6Ik1lZ2EgQXR0YWNrIFJhcmUifSwKICB7bjoyNjYsbmFtZToiTWVnYSBFZWxl"+
-"a3Ryb3NzIGV4IixyOiJNZWdhIEF0dGFjayBSYXJlIn0sCiAge246MjY3LG5hbWU6Ik1lZ2EgRGlhbmNp"+
-"ZSBleCIscjoiTWVnYSBBdHRhY2sgUmFyZSJ9LAogIHtuOjI2OCxuYW1lOiJNZWdhIEhhd2x1Y2hhIGV4"+
-"IixyOiJNZWdhIEF0dGFjayBSYXJlIn0sCiAge246MjY5LG5hbWU6Ik1lZ2EgR2VuZ2FyIGV4IixyOiJN"+
-"ZWdhIEF0dGFjayBSYXJlIn0sCiAge246MjcwLG5hbWU6Ik1lZ2EgU2NyYWZ0eSBleCIscjoiTWVnYSBB"+
-"dHRhY2sgUmFyZSJ9LAogIHtuOjI3MSxuYW1lOiJNZWdhIERyYWdvbml0ZSBleCIscjoiTWVnYSBBdHRh"+
-"Y2sgUmFyZSJ9LAogIHtuOjI3MixuYW1lOiJNZWdhIE1lZ2FuaXVtIGV4IixyOiJTcGVjaWFsIElsbHVz"+
-"dHJhdGlvbiBSYXJlIn0sCiAge246MjczLG5hbWU6Ik1lZ2EgRW1ib2FyIGV4IixyOiJTcGVjaWFsIEls"+
-"bHVzdHJhdGlvbiBSYXJlIn0sCiAge246Mjc0LG5hbWU6Ik1lZ2EgRmVyYWxpZ2F0ciBleCIscjoiU3Bl"+
-"Y2lhbCBJbGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI3NSxuYW1lOiJNZWdhIEZyb3NsYXNzIGV4Iixy"+
-"OiJTcGVjaWFsIElsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246Mjc2LG5hbWU6IlBpa2FjaHUgZXgiLHI6"+
-"IlNwZWNpYWwgSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyNzcsbmFtZToiUGlrYWNodSBleCIscjoi"+
-"U3BlY2lhbCBJbGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI3OCxuYW1lOiJNZWdhIEVlbGVrdHJvc3Mg"+
-"ZXgiLHI6IlNwZWNpYWwgSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyNzksbmFtZToiSW9ubydzIEJl"+
-"bGxpYm9sdCBleCIscjoiU3BlY2lhbCBJbGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI4MCxuYW1lOiJM"+
-"aWxsaWUncyBDbGVmYWlyeSBleCIscjoiU3BlY2lhbCBJbGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI4"+
-"MSxuYW1lOiJUZWFtIFJvY2tldCdzIE1ld3R3byBleCIscjoiU3BlY2lhbCBJbGx1c3RyYXRpb24gUmFy"+
-"ZSJ9LAogIHtuOjI4MixuYW1lOiJNZWdhIERpYW5jaWUgZXgiLHI6IlNwZWNpYWwgSWxsdXN0cmF0aW9u"+
-"IFJhcmUifSwKICB7bjoyODMsbmFtZToiTWVnYSBIYXdsdWNoYSBleCIscjoiU3BlY2lhbCBJbGx1c3Ry"+
-"YXRpb24gUmFyZSJ9LAogIHtuOjI4NCxuYW1lOiJNZWdhIEdlbmdhciBleCIscjoiU3BlY2lhbCBJbGx1"+
-"c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI4NSxuYW1lOiJNZWdhIFNjcmFmdHkgZXgiLHI6IlNwZWNpYWwg"+
-"SWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyODYsbmFtZToiTidzIFpvcm9hcmsgZXgiLHI6IlNwZWNp"+
-"YWwgSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyODcsbmFtZToiTWFybmllJ3MgR3JpbW1zbmFybCBl"+
-"eCIscjoiU3BlY2lhbCBJbGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI4OCxuYW1lOiJGZXphbmRpcGl0"+
-"aSBleCIscjoiU3BlY2lhbCBJbGx1c3RyYXRpb24gUmFyZSJ9LAogIHtuOjI4OSxuYW1lOiJTdGV2ZW4n"+
-"cyBNZXRhZ3Jvc3MgZXgiLHI6IlNwZWNpYWwgSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoyOTAsbmFt"+
-"ZToiTWVnYSBEcmFnb25pdGUgZXgiLHI6IlNwZWNpYWwgSWxsdXN0cmF0aW9uIFJhcmUifSwKICB7bjoy"+
-"OTEsbmFtZToiQ2FuYXJpIixyOiJTcGVjaWFsIElsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246MjkyLG5h"+
-"bWU6IklyaXMncyBGaWdodGluZyBTcGlyaXQiLHI6IlNwZWNpYWwgSWxsdXN0cmF0aW9uIFJhcmUifSwK"+
-"ICB7bjoyOTMsbmFtZToiU3VyZmVyIixyOiJTcGVjaWFsIElsbHVzdHJhdGlvbiBSYXJlIn0sCiAge246"+
-"Mjk0LG5hbWU6Ik1lZ2EgQ2hhcml6YXJkIFkgZXgiLHI6Ik1lZ2EgSHlwZXIgUmFyZSJ9LAogIHtuOjI5"+
-"NSxuYW1lOiJNZWdhIERyYWdvbml0ZSBleCIscjoiTWVnYSBIeXBlciBSYXJlIn0sCl07Cgpjb25zdCBS"+
-"QVJJVElFUz1bJ0FsbGUnLCdDb21tb24nLCdVbmNvbW1vbicsJ1JhcmUnLCdEb3VibGUgUmFyZScsJ0ls"+
-"bHVzdHJhdGlvbiBSYXJlJywnVWx0cmEgUmFyZScsJ01lZ2EgQXR0YWNrIFJhcmUnLCdTcGVjaWFsIEls"+
-"bHVzdHJhdGlvbiBSYXJlJywnTWVnYSBIeXBlciBSYXJlJ107CmNvbnN0IFJDPXsKICAnU3BlY2lhbCBJ"+
-"bGx1c3RyYXRpb24gUmFyZSc6e2JnOidyZ2JhKDEwMCw4MCwyMjAsMC4yKScsdGV4dDonI2EwOTBmZid9"+
-"LAogICdNZWdhIEh5cGVyIFJhcmUnOntiZzoncmdiYSgyMzIsMjQsMjYsMC4yNSknLHRleHQ6JyNmZjgw"+
-"ODAnfSwKICAnTWVnYSBBdHRhY2sgUmFyZSc6e2JnOidyZ2JhKDIzMiwyNCwyNiwwLjE1KScsdGV4dDon"+
-"I2ZmNjA2MCd9LAogICdJbGx1c3RyYXRpb24gUmFyZSc6e2JnOidyZ2JhKDIwLDE4MCwxMjAsMC4yKScs"+
-"dGV4dDonIzQwZDA5MCd9LAogICdVbHRyYSBSYXJlJzp7Ymc6J3JnYmEoMjIwLDE2MCwyMCwwLjE1KScs"+
-"dGV4dDonI2Q0YTgzMCd9LAogICdEb3VibGUgUmFyZSc6e2JnOidyZ2JhKDUwLDEyMCwyMjAsMC4yKScs"+
-"dGV4dDonIzYwYTBmZid9LAogICdSYXJlJzp7Ymc6J3JnYmEoNTAsMTgwLDgwLDAuMTUpJyx0ZXh0Oicj"+
-"NTBjMDYwJ30sCiAgJ1VuY29tbW9uJzp7Ymc6J3JnYmEoMTIwLDEyMCwxNDAsMC4xNSknLHRleHQ6JyM4"+
-"ODg4YWEnfSwKICAnQ29tbW9uJzp7Ymc6J3JnYmEoNzAsNzAsODAsMC4xNSknLHRleHQ6JyM1NTU1NjYn"+
-"fSwKfTsKCmxldCBjdXJSYXJpdHk9J0FsbGUnOwoKZnVuY3Rpb24gaW5pdCgpewogIGRvY3VtZW50Lmdl"+
-"dEVsZW1lbnRCeUlkKCdwaWxscycpLmlubmVySFRNTD1SQVJJVElFUy5tYXAoKHIsaSk9PgogICAgYDxi"+
-"dXR0b24gY2xhc3M9InBsLXBpbGwke2k9PT0wPycgb24nOicnfSIgb25jbGljaz0ic2V0UmFyaXR5KCck"+
-"e3J9Jyx0aGlzKSI+JHtyfTwvYnV0dG9uPmAKICApLmpvaW4oJycpOwogIGRvRmlsdGVyKCk7Cn0KCmZ1"+
-"bmN0aW9uIHNldFJhcml0eShyLGJ0bil7CiAgY3VyUmFyaXR5PXI7CiAgZG9jdW1lbnQucXVlcnlTZWxl"+
-"Y3RvckFsbCgnLnBsLXBpbGwnKS5mb3JFYWNoKGI9PmIuY2xhc3NMaXN0LnJlbW92ZSgnb24nKSk7CiAg"+
-"YnRuLmNsYXNzTGlzdC5hZGQoJ29uJyk7CiAgZG9GaWx0ZXIoKTsKfQoKZnVuY3Rpb24gZG9GaWx0ZXIo"+
-"KXsKICBjb25zdCBxPWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzZWFyY2gnKS52YWx1ZS50b0xvd2Vy"+
-"Q2FzZSgpOwogIGxldCBsaXN0PWN1clJhcml0eT09PSdBbGxlJz9DQVJEUzpDQVJEUy5maWx0ZXIoYz0+"+
-"Yy5yPT09Y3VyUmFyaXR5KTsKICBpZihxKWxpc3Q9bGlzdC5maWx0ZXIoYz0+Yy5uYW1lLnRvTG93ZXJD"+
-"YXNlKCkuaW5jbHVkZXMocSkpOwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdjb3VudCcpLnRleHRD"+
-"b250ZW50PWxpc3QubGVuZ3RoKycgS2FydGVuJzsKICBpZighbGlzdC5sZW5ndGgpe2RvY3VtZW50Lmdl"+
-"dEVsZW1lbnRCeUlkKCdncmlkJykuaW5uZXJIVE1MPSc8ZGl2IGNsYXNzPSJwbC1lbXB0eSI+S2VpbmUg"+
-"S2FydGVuIGdlZnVuZGVuPC9kaXY+JztyZXR1cm47fQogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdn"+
-"cmlkJykuaW5uZXJIVE1MPWxpc3QubWFwKGM9PmAKICAgIDxkaXYgY2xhc3M9InBsLWNhcmQiIG9uY2xp"+
-"Y2s9InNob3dDYXJkKCR7Yy5ufSkiPgogICAgICA8aW1nIHNyYz0iaHR0cHM6Ly9pbWFnZXMuc2NyeWRl"+
-"eC5jb20vcG9rZW1vbi9tZTJwdDUtJHtjLm59L3NtYWxsIiBsb2FkaW5nPSJsYXp5IiBhbHQ9IiR7Yy5u"+
-"YW1lfSIgb25lcnJvcj0idGhpcy5zdHlsZS5vcGFjaXR5PTAuMSI+CiAgICAgIDxkaXYgY2xhc3M9InBs"+
-"LWNhcmQtYm9keSI+CiAgICAgICAgPGRpdiBjbGFzcz0icGwtY2FyZC1uYW1lIj4ke2MubmFtZX08L2Rp"+
-"dj4KICAgICAgICA8ZGl2IGNsYXNzPSJwbC1jYXJkLXJhcml0eSI+JHtjLnJ9PC9kaXY+CiAgICAgICAg"+
-"PGRpdiBjbGFzcz0icGwtY2FyZC1udW0iPiMke2Mubn0vMjk1PC9kaXY+CiAgICAgIDwvZGl2PgogICAg"+
-"PC9kaXY+YCkuam9pbignJyk7Cn0KCmZ1bmN0aW9uIHNob3dDYXJkKG4pewogIGNvbnN0IGM9Q0FSRFMu"+
-"ZmluZCh4PT54Lm49PT1uKTtpZighYylyZXR1cm47CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ20t"+
-"aW1nJykuc3JjPWBodHRwczovL2ltYWdlcy5zY3J5ZGV4LmNvbS9wb2tlbW9uL21lMnB0NS0ke2Mubn0v"+
-"bWVkaXVtYDsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbS1uYW1lJykudGV4dENvbnRlbnQ9Yy5u"+
-"YW1lOwogIGNvbnN0IHRhZz1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbS10YWcnKTsKICB0YWcudGV4"+
-"dENvbnRlbnQ9Yy5yOwogIGNvbnN0IGNvbD1SQ1tjLnJdfHx7Ymc6J3JnYmEoNzAsNzAsODAsMC4xNSkn"+
-"LHRleHQ6JyM4ODgnfTsKICB0YWcuc3R5bGUuYmFja2dyb3VuZD1jb2wuYmc7dGFnLnN0eWxlLmNvbG9y"+
-"PWNvbC50ZXh0OwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtLW51bScpLnRleHRDb250ZW50PSdL"+
-"YXJ0ZSBOci4gJytjLm4rJyAvIDI5NSc7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21vZGFsJyku"+
-"Y2xhc3NMaXN0LmFkZCgnb24nKTsKfQoKZnVuY3Rpb24gY2xvc2VNb2RhbCgpe2RvY3VtZW50LmdldEVs"+
-"ZW1lbnRCeUlkKCdtb2RhbCcpLmNsYXNzTGlzdC5yZW1vdmUoJ29uJyk7fQppbml0KCk7CgpmdW5jdGlv"+
-"biBzdGFydExvYWRlcigpewogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdwbC1lbnRlcicpLnN0eWxl"+
-"LmRpc3BsYXk9J25vbmUnOwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdwbC1sb2FkaW5nJykuc3R5"+
-"bGUuZGlzcGxheT0nZmxleCc7CgogIGNvbnN0IGN0eD1uZXcod2luZG93LkF1ZGlvQ29udGV4dHx8d2lu"+
-"ZG93LndlYmtpdEF1ZGlvQ29udGV4dCkoKTsKCiAgZnVuY3Rpb24gYmVlcChmcmVxLHN0YXJ0LGR1cix2"+
-"b2w9MC4xOCx0eXBlPSdzaW5lJyl7CiAgICBjb25zdCBvPWN0eC5jcmVhdGVPc2NpbGxhdG9yKCk7CiAg"+
-"ICBjb25zdCBnPWN0eC5jcmVhdGVHYWluKCk7CiAgICBvLmNvbm5lY3QoZyk7Zy5jb25uZWN0KGN0eC5k"+
-"ZXN0aW5hdGlvbik7CiAgICBvLnR5cGU9dHlwZTtvLmZyZXF1ZW5jeS5zZXRWYWx1ZUF0VGltZShmcmVx"+
-"LGN0eC5jdXJyZW50VGltZStzdGFydCk7CiAgICBnLmdhaW4uc2V0VmFsdWVBdFRpbWUoMCxjdHguY3Vy"+
-"cmVudFRpbWUrc3RhcnQpOwogICAgZy5nYWluLmxpbmVhclJhbXBUb1ZhbHVlQXRUaW1lKHZvbCxjdHgu"+
-"Y3VycmVudFRpbWUrc3RhcnQrMC4wMSk7CiAgICBnLmdhaW4uZXhwb25lbnRpYWxSYW1wVG9WYWx1ZUF0"+
-"VGltZSgwLjAwMSxjdHguY3VycmVudFRpbWUrc3RhcnQrZHVyKTsKICAgIG8uc3RhcnQoY3R4LmN1cnJl"+
-"bnRUaW1lK3N0YXJ0KTsKICAgIG8uc3RvcChjdHguY3VycmVudFRpbWUrc3RhcnQrZHVyKzAuMDUpOwog"+
-"IH0KCiAgZnVuY3Rpb24gbm9pc2Uoc3RhcnQsZHVyLHZvbD0wLjA2KXsKICAgIGNvbnN0IGJ1Zj1jdHgu"+
-"Y3JlYXRlQnVmZmVyKDEsY3R4LnNhbXBsZVJhdGUqZHVyLGN0eC5zYW1wbGVSYXRlKTsKICAgIGNvbnN0"+
-"IGQ9YnVmLmdldENoYW5uZWxEYXRhKDApOwogICAgZm9yKGxldCBpPTA7aTxkLmxlbmd0aDtpKyspZFtp"+
-"XT0oTWF0aC5yYW5kb20oKSoyLTEpOwogICAgY29uc3Qgc3JjPWN0eC5jcmVhdGVCdWZmZXJTb3VyY2Uo"+
-"KTsKICAgIGNvbnN0IGc9Y3R4LmNyZWF0ZUdhaW4oKTsKICAgIGNvbnN0IGY9Y3R4LmNyZWF0ZUJpcXVh"+
-"ZEZpbHRlcigpOwogICAgZi50eXBlPSdiYW5kcGFzcyc7Zi5mcmVxdWVuY3kudmFsdWU9MTIwMDtmLlEu"+
-"dmFsdWU9MC44OwogICAgc3JjLmJ1ZmZlcj1idWY7c3JjLmNvbm5lY3QoZik7Zi5jb25uZWN0KGcpO2cu"+
-"Y29ubmVjdChjdHguZGVzdGluYXRpb24pOwogICAgZy5nYWluLnNldFZhbHVlQXRUaW1lKDAsY3R4LmN1"+
-"cnJlbnRUaW1lK3N0YXJ0KTsKICAgIGcuZ2Fpbi5saW5lYXJSYW1wVG9WYWx1ZUF0VGltZSh2b2wsY3R4"+
-"LmN1cnJlbnRUaW1lK3N0YXJ0KzAuMDEpOwogICAgZy5nYWluLmV4cG9uZW50aWFsUmFtcFRvVmFsdWVB"+
-"dFRpbWUoMC4wMDEsY3R4LmN1cnJlbnRUaW1lK3N0YXJ0K2R1cik7CiAgICBzcmMuc3RhcnQoY3R4LmN1"+
-"cnJlbnRUaW1lK3N0YXJ0KTsKICAgIHNyYy5zdG9wKGN0eC5jdXJyZW50VGltZStzdGFydCtkdXIrMC4w"+
-"NSk7CiAgfQoKICAvLyBHbGl0Y2ggemFwcwogIG5vaXNlKDAuMCwgMC4wOCwgMC4xMCk7CiAgYmVlcCgx"+
-"ODAsIDAuMCwgMC4xMiwgMC4xMCwgJ3Nhd3Rvb3RoJyk7CiAgbm9pc2UoMC4xNSwgMC4wNiwgMC4wOCk7"+
-"CiAgYmVlcCgzMjAsIDAuMTgsIDAuMDgsIDAuMDgsICdzcXVhcmUnKTsKCiAgLy8gUmV2ZWFsIHN3ZWVw"+
-"IHRvbmVzCiAgYmVlcCgyMjAsIDAuNSwgMC4zLCAwLjEyKTsKICBiZWVwKDMzMCwgMC43NSwgMC4yNSwg"+
-"MC4xMCk7CiAgYmVlcCg0NDAsIDEuMCwgMC4yLCAwLjEwKTsKCiAgLy8gTWlkIGdsaXRjaCBidXJzdAog"+
-"IG5vaXNlKDEuNiwgMC4wNSwgMC4wOSk7CiAgYmVlcCg2MDAsIDEuNjIsIDAuMDUsIDAuMDcsICdzYXd0"+
-"b290aCcpOwogIG5vaXNlKDEuNywgMC4wNCwgMC4wNyk7CgogIC8vIFNjYW4gcHVsc2VzCiAgYmVlcCgy"+
-"ODAsIDIuMiwgMC4xNSwgMC4wOSk7CiAgYmVlcCgyODAsIDIuNSwgMC4xNSwgMC4wOSk7CiAgYmVlcCgy"+
-"ODAsIDIuOCwgMC4xNSwgMC4wOSk7CgogIC8vIEZpbmFsIHBvd2VyLXVwIGNob3JkCiAgYmVlcCgyMjAs"+
-"IDMuMywgMC41LCAwLjE0KTsKICBiZWVwKDMzMCwgMy4zNSwgMC40NSwgMC4xMik7CiAgYmVlcCg1NTAs"+
-"IDMuNCwgMC40LCAwLjEwKTsKICBiZWVwKDg4MCwgMy41LCAwLjM1LCAwLjA4KTsKICBub2lzZSgzLjMs"+
-"IDAuMTIsIDAuMDcpOwoKICBzZXRUaW1lb3V0KCgpPT57ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Bs"+
-"LWxvYWRlcicpLmNsYXNzTGlzdC5hZGQoJ2hpZGUnKTt9LDQwMDApOwp9Cg=="];
-var _0x3c4d=_0x1a2b.join('');
-var _0x5e6f=atob(_0x3c4d);
-var _0x7a8b=document.createElement('script');
-_0x7a8b.textContent=_0x5e6f;
-document.currentScript.parentNode.insertBefore(_0x7a8b,document.currentScript);
-})();
+const CARDS=[
+  {n:1,name:"Erika's Oddish",r:"Common"},
+  {n:2,name:"Erika's Gloom",r:"Uncommon"},
+  {n:3,name:"Erika's Vileplume ex",r:"Double Rare"},
+  {n:4,name:"Erika's Bellsprout",r:"Common"},
+  {n:5,name:"Erika's Weepinbell",r:"Uncommon"},
+  {n:6,name:"Erika's Victreebel",r:"Rare"},
+  {n:7,name:"Erika's Tangela",r:"Common"},
+  {n:8,name:"Chikorita",r:"Common"},
+  {n:9,name:"Bayleef",r:"Uncommon"},
+  {n:10,name:"Mega Meganium ex",r:"Double Rare"},
+  {n:11,name:"Wurmple",r:"Common"},
+  {n:12,name:"Silcoon",r:"Common"},
+  {n:13,name:"Beautifly",r:"Uncommon"},
+  {n:14,name:"Cascoon",r:"Common"},
+  {n:15,name:"Dustox",r:"Uncommon"},
+  {n:16,name:"Budew",r:"Common"},
+  {n:17,name:"Grubbin",r:"Common"},
+  {n:18,name:"Team Rocket's Tarountula",r:"Common"},
+  {n:19,name:"Team Rocket's Spidops",r:"Rare"},
+  {n:20,name:"Charmander",r:"Common"},
+  {n:21,name:"Charmeleon",r:"Uncommon"},
+  {n:22,name:"Mega Charizard Y ex",r:"Double Rare"},
+  {n:23,name:"Ethan's Slugma",r:"Common"},
+  {n:24,name:"Ethan's Magcargo",r:"Rare"},
+  {n:25,name:"Entei",r:"Rare"},
+  {n:26,name:"Ethan's Ho-Oh ex",r:"Double Rare"},
+  {n:27,name:"Numel",r:"Common"},
+  {n:28,name:"Camerupt",r:"Uncommon"},
+  {n:29,name:"Tepig",r:"Common"},
+  {n:30,name:"Pignite",r:"Uncommon"},
+  {n:31,name:"Mega Emboar ex",r:"Double Rare"},
+  {n:32,name:"N's Darumaka",r:"Common"},
+  {n:33,name:"N's Darmanitan",r:"Uncommon"},
+  {n:34,name:"Salandit",r:"Common"},
+  {n:35,name:"Salazzle",r:"Uncommon"},
+  {n:36,name:"Scorbunny",r:"Common"},
+  {n:37,name:"Raboot",r:"Common"},
+  {n:38,name:"Cinderace ex",r:"Double Rare"},
+  {n:39,name:"Psyduck",r:"Common"},
+  {n:40,name:"Golduck",r:"Uncommon"},
+  {n:41,name:"Totodile",r:"Common"},
+  {n:42,name:"Croconaw",r:"Uncommon"},
+  {n:43,name:"Mega Feraligatr ex",r:"Double Rare"},
+  {n:44,name:"Sneasel",r:"Common"},
+  {n:45,name:"Weavile",r:"Uncommon"},
+  {n:46,name:"Snorunt",r:"Common"},
+  {n:47,name:"Mega Froslass ex",r:"Double Rare"},
+  {n:48,name:"Regice ex",r:"Double Rare"},
+  {n:49,name:"N's Vanillite",r:"Common"},
+  {n:50,name:"N's Vanillish",r:"Common"},
+  {n:51,name:"N's Vanilluxe",r:"Uncommon"},
+  {n:52,name:"Snom",r:"Common"},
+  {n:53,name:"Frosmoth",r:"Uncommon"},
+  {n:54,name:"Glastrier",r:"Uncommon"},
+  {n:55,name:"Pikachu",r:"Common"},
+  {n:56,name:"Raichu",r:"Uncommon"},
+  {n:57,name:"Pikachu ex",r:"Double Rare"},
+  {n:58,name:"Voltorb ex",r:"Double Rare"},
+  {n:59,name:"Tynamo",r:"Common"},
+  {n:60,name:"Eelektrik",r:"Uncommon"},
+  {n:61,name:"Mega Eelektross ex",r:"Double Rare"},
+  {n:62,name:"Stunfisk",r:"Common"},
+  {n:63,name:"Helioptile",r:"Common"},
+  {n:64,name:"Heliolisk",r:"Uncommon"},
+  {n:65,name:"Charjabug",r:"Common"},
+  {n:66,name:"Vikavolt",r:"Uncommon"},
+  {n:67,name:"Tapu Koko",r:"Rare"},
+  {n:68,name:"Hop's Pincurchin ex",r:"Double Rare"},
+  {n:69,name:"Iono's Tadbulb",r:"Common"},
+  {n:70,name:"Iono's Bellibolt ex",r:"Double Rare"},
+  {n:71,name:"Iono's Wattrel",r:"Common"},
+  {n:72,name:"Iono's Kilowattrel",r:"Rare"},
+  {n:73,name:"Miraidon ex",r:"Double Rare"},
+  {n:74,name:"Clefairy",r:"Common"},
+  {n:75,name:"Clefable",r:"Uncommon"},
+  {n:76,name:"Lillie's Clefairy ex",r:"Double Rare"},
+  {n:77,name:"Team Rocket's Exeggcute",r:"Common"},
+  {n:78,name:"Team Rocket's Exeggutor",r:"Rare"},
+  {n:79,name:"Team Rocket's Mewtwo ex",r:"Double Rare"},
+  {n:80,name:"Togepi",r:"Common"},
+  {n:81,name:"Togetic",r:"Common"},
+  {n:82,name:"Togekiss",r:"Rare"},
+  {n:83,name:"Marill",r:"Common"},
+  {n:84,name:"Azumarill ex",r:"Double Rare"},
+  {n:85,name:"Misdreavus",r:"Common"},
+  {n:86,name:"Mismagius",r:"Rare"},
+  {n:87,name:"Ralts",r:"Common"},
+  {n:88,name:"Kirlia",r:"Common"},
+  {n:89,name:"Mega Gardevoir ex",r:"Double Rare"},
+  {n:90,name:"Shuppet",r:"Common"},
+  {n:91,name:"Banette",r:"Uncommon"},
+  {n:92,name:"Rotom",r:"Common"},
+  {n:93,name:"Swirlix",r:"Common"},
+  {n:94,name:"Slurpuff",r:"Uncommon"},
+  {n:95,name:"Hop's Phantump",r:"Common"},
+  {n:96,name:"Hop's Trevenant",r:"Rare"},
+  {n:97,name:"Team Rocket's Mimikyu",r:"Uncommon"},
+  {n:98,name:"Spectrier",r:"Rare"},
+  {n:99,name:"Munkidori",r:"Rare"},
+  {n:100,name:"Team Rocket's Diglett",r:"Common"},
+  {n:101,name:"Team Rocket's Dugtrio",r:"Uncommon"},
+  {n:102,name:"Hitmontop",r:"Common"},
+  {n:103,name:"Meditite",r:"Common"},
+  {n:104,name:"Medicham",r:"Common"},
+  {n:105,name:"Lunatone",r:"Rare"},
+  {n:106,name:"Solrock",r:"Uncommon"},
+  {n:107,name:"Regirock ex",r:"Double Rare"},
+  {n:108,name:"Groudon",r:"Rare"},
+  {n:109,name:"Cynthia's Gible",r:"Common"},
+  {n:110,name:"Cynthia's Gabite",r:"Uncommon"},
+  {n:111,name:"Cynthia's Garchomp ex",r:"Double Rare"},
+  {n:112,name:"Riolu",r:"Common"},
+  {n:113,name:"Mega Lucario ex",r:"Double Rare"},
+  {n:114,name:"Stunfisk ex",r:"Double Rare"},
+  {n:115,name:"Pancham",r:"Common"},
+  {n:116,name:"Mega Hawlucha ex",r:"Double Rare"},
+  {n:117,name:"Carbink",r:"Uncommon"},
+  {n:118,name:"Rolycoly",r:"Common"},
+  {n:119,name:"Carkol",r:"Common"},
+  {n:120,name:"Coalossal",r:"Rare"},
+  {n:121,name:"Koraidon ex",r:"Double Rare"},
+  {n:122,name:"Okidogi",r:"Rare"},
+  {n:123,name:"Gastly",r:"Common"},
+  {n:124,name:"Haunter",r:"Uncommon"},
+  {n:125,name:"Mega Gengar ex",r:"Double Rare"},
+  {n:126,name:"Team Rocket's Murkrow",r:"Common"},
+  {n:127,name:"Team Rocket's Honchkrow",r:"Rare"},
+  {n:128,name:"Poochyena",r:"Common"},
+  {n:129,name:"Mightyena",r:"Uncommon"},
+  {n:130,name:"Galarian Zigzagoon",r:"Common"},
+  {n:131,name:"Galarian Linoone",r:"Uncommon"},
+  {n:132,name:"Galarian Obstagoon",r:"Uncommon"},
+  {n:133,name:"Cynthia's Spiritomb",r:"Common"},
+  {n:134,name:"Scraggy",r:"Common"},
+  {n:135,name:"Mega Scrafty ex",r:"Double Rare"},
+  {n:136,name:"N's Zorua",r:"Common"},
+  {n:137,name:"N's Zoroark ex",r:"Double Rare"},
+  {n:138,name:"Vullaby",r:"Common"},
+  {n:139,name:"Mandibuzz ex",r:"Double Rare"},
+  {n:140,name:"Pangoro",r:"Uncommon"},
+  {n:141,name:"Hoopa",r:"Rare"},
+  {n:142,name:"Fezandipiti ex",r:"Double Rare"},
+  {n:143,name:"Pecharunt",r:"Rare"},
+  {n:144,name:"Mawile",r:"Uncommon"},
+  {n:145,name:"Registeel ex",r:"Double Rare"},
+  {n:146,name:"Pawniard",r:"Common"},
+  {n:147,name:"Bisharp",r:"Uncommon"},
+  {n:148,name:"Kingambit",r:"Rare"},
+  {n:149,name:"Togedemaru ex",r:"Double Rare"},
+  {n:150,name:"Dratini",r:"Common"},
+  {n:151,name:"Dragonair",r:"Uncommon"},
+  {n:152,name:"Mega Dragonite ex",r:"Double Rare"},
+  {n:153,name:"Rayquaza",r:"Rare"},
+  {n:154,name:"N's Reshiram",r:"Rare"},
+  {n:155,name:"N's Zekrom",r:"Rare"},
+  {n:156,name:"Noibat",r:"Common"},
+  {n:157,name:"Noivern",r:"Uncommon"},
+  {n:158,name:"Dreepy",r:"Common"},
+  {n:159,name:"Drakloak",r:"Uncommon"},
+  {n:160,name:"Dragapult ex",r:"Double Rare"},
+  {n:161,name:"Team Rocket's Meowth",r:"Common"},
+  {n:162,name:"Team Rocket's Kangaskhan ex",r:"Double Rare"},
+  {n:163,name:"Larry's Dunsparce",r:"Common"},
+  {n:164,name:"Larry's Dudunsparce ex",r:"Double Rare"},
+  {n:165,name:"Skitty",r:"Common"},
+  {n:166,name:"Delcatty",r:"Uncommon"},
+  {n:167,name:"Zangoose ex",r:"Double Rare"},
+  {n:168,name:"Larry's Starly",r:"Common"},
+  {n:169,name:"Larry's Staravia",r:"Common"},
+  {n:170,name:"Larry's Staraptor",r:"Rare"},
+  {n:171,name:"Fan Rotom",r:"Common"},
+  {n:172,name:"Mega Audino ex",r:"Double Rare"},
+  {n:173,name:"Larry's Rufflet",r:"Common"},
+  {n:174,name:"Larry's Braviary",r:"Uncommon"},
+  {n:175,name:"Larry's Komala",r:"Common"},
+  {n:176,name:"Drampa",r:"Uncommon"},
+  {n:177,name:"Hop's Cramorant",r:"Uncommon"},
+  {n:178,name:"Terapagos",r:"Rare"},
+  {n:179,name:"Terapagos ex",r:"Double Rare"},
+  {n:180,name:"Acerola's Mischief",r:"Common"},
+  {n:181,name:"Air Balloon",r:"Uncommon"},
+  {n:182,name:"Anthea & Concordia",r:"Common"},
+  {n:183,name:"Boss's Orders",r:"Uncommon"},
+  {n:184,name:"Buddy-Buddy Poffin",r:"Uncommon"},
+  {n:185,name:"Canari",r:"Uncommon"},
+  {n:186,name:"Counter Gain",r:"Common"},
+  {n:187,name:"Fighting Gong",r:"Uncommon"},
+  {n:188,name:"Forest of Vitality",r:"Uncommon"},
+  {n:189,name:"Glass Trumpet",r:"Common"},
+  {n:190,name:"Iris's Fighting Spirit",r:"Common"},
+  {n:191,name:"Light Ball",r:"Uncommon"},
+  {n:192,name:"Lillie's Determination",r:"Uncommon"},
+  {n:193,name:"Mega Signal",r:"Common"},
+  {n:194,name:"Mystery Garden",r:"Uncommon"},
+  {n:195,name:"N's PP Up",r:"Common"},
+  {n:196,name:"Night Stretcher",r:"Uncommon"},
+  {n:197,name:"Nighttime Mine",r:"Uncommon"},
+  {n:198,name:"Poke Pad",r:"Uncommon"},
+  {n:199,name:"Premium Power Pro",r:"Common"},
+  {n:200,name:"Surfer",r:"Common"},
+  {n:201,name:"Team Rocket's Archer",r:"Common"},
+  {n:202,name:"Team Rocket's Ariana",r:"Uncommon"},
+  {n:203,name:"Team Rocket's Factory",r:"Uncommon"},
+  {n:204,name:"Team Rocket's Giovanni",r:"Uncommon"},
+  {n:205,name:"Team Rocket's Great Ball",r:"Common"},
+  {n:206,name:"Team Rocket's Hypnotizer",r:"Uncommon"},
+  {n:207,name:"Team Rocket's Petrel",r:"Uncommon"},
+  {n:208,name:"Team Rocket's Proton",r:"Common"},
+  {n:209,name:"Team Rocket's Transceiver",r:"Uncommon"},
+  {n:210,name:"Team Rocket's Watchtower",r:"Uncommon"},
+  {n:211,name:"Thick Scale",r:"Common"},
+  {n:212,name:"Tool Scrapper",r:"Uncommon"},
+  {n:213,name:"Ultra Ball",r:"Uncommon"},
+  {n:214,name:"Urbain",r:"Common"},
+  {n:215,name:"Waitress",r:"Uncommon"},
+  {n:216,name:"Prism Energy",r:"Uncommon"},
+  {n:217,name:"Team Rocket's Energy",r:"Uncommon"},
+  {n:218,name:"Erika's Tangela",r:"Illustration Rare"},
+  {n:219,name:"Beautifly",r:"Illustration Rare"},
+  {n:220,name:"Dustox",r:"Illustration Rare"},
+  {n:221,name:"Budew",r:"Illustration Rare"},
+  {n:222,name:"Ethan's Magcargo",r:"Illustration Rare"},
+  {n:223,name:"Numel",r:"Illustration Rare"},
+  {n:224,name:"Salazzle",r:"Illustration Rare"},
+  {n:225,name:"Scorbunny",r:"Illustration Rare"},
+  {n:226,name:"Psyduck",r:"Illustration Rare"},
+  {n:227,name:"Snorunt",r:"Illustration Rare"},
+  {n:228,name:"Weavile",r:"Illustration Rare"},
+  {n:229,name:"Heliolisk",r:"Illustration Rare"},
+  {n:230,name:"Vikavolt",r:"Illustration Rare"},
+  {n:231,name:"Iono's Wattrel",r:"Illustration Rare"},
+  {n:232,name:"Marill",r:"Illustration Rare"},
+  {n:233,name:"Misdreavus",r:"Illustration Rare"},
+  {n:234,name:"Banette",r:"Illustration Rare"},
+  {n:235,name:"Togekiss",r:"Illustration Rare"},
+  {n:236,name:"Slurpuff",r:"Illustration Rare"},
+  {n:237,name:"Hop's Trevenant",r:"Illustration Rare"},
+  {n:238,name:"Team Rocket's Mimikyu",r:"Illustration Rare"},
+  {n:239,name:"Team Rocket's Dugtrio",r:"Illustration Rare"},
+  {n:240,name:"Hitmontop",r:"Illustration Rare"},
+  {n:241,name:"Medicham",r:"Illustration Rare"},
+  {n:242,name:"Carbink",r:"Illustration Rare"},
+  {n:243,name:"Mightyena",r:"Illustration Rare"},
+  {n:244,name:"Cynthia's Spiritomb",r:"Illustration Rare"},
+  {n:245,name:"Galarian Obstagoon",r:"Illustration Rare"},
+  {n:246,name:"Mawile",r:"Illustration Rare"},
+  {n:247,name:"Dreepy",r:"Illustration Rare"},
+  {n:248,name:"Drakloak",r:"Illustration Rare"},
+  {n:249,name:"Larry's Staraptor",r:"Illustration Rare"},
+  {n:250,name:"Fan Rotom",r:"Illustration Rare"},
+  {n:251,name:"Sprigatito ex",r:"Ultra Rare"},
+  {n:252,name:"Stunfisk ex",r:"Ultra Rare"},
+  {n:253,name:"Mega Audino ex",r:"Ultra Rare"},
+  {n:254,name:"Anthea & Concordia",r:"Ultra Rare"},
+  {n:255,name:"Black Belt's Training",r:"Ultra Rare"},
+  {n:256,name:"Boss's Orders (Corbeau)",r:"Ultra Rare"},
+  {n:257,name:"Canari",r:"Ultra Rare"},
+  {n:258,name:"Cheren",r:"Ultra Rare"},
+  {n:259,name:"Counter Gain",r:"Ultra Rare"},
+  {n:260,name:"Glass Trumpet",r:"Ultra Rare"},
+  {n:261,name:"Jamming Tower",r:"Ultra Rare"},
+  {n:262,name:"N's PP Up",r:"Ultra Rare"},
+  {n:263,name:"Team Rocket's Transceiver",r:"Ultra Rare"},
+  {n:264,name:"Ultra Ball",r:"Ultra Rare"},
+  {n:265,name:"Mega Froslass ex",r:"Mega Attack Rare"},
+  {n:266,name:"Mega Eelektross ex",r:"Mega Attack Rare"},
+  {n:267,name:"Mega Diancie ex",r:"Mega Attack Rare"},
+  {n:268,name:"Mega Hawlucha ex",r:"Mega Attack Rare"},
+  {n:269,name:"Mega Gengar ex",r:"Mega Attack Rare"},
+  {n:270,name:"Mega Scrafty ex",r:"Mega Attack Rare"},
+  {n:271,name:"Mega Dragonite ex",r:"Mega Attack Rare"},
+  {n:272,name:"Mega Meganium ex",r:"Special Illustration Rare"},
+  {n:273,name:"Mega Emboar ex",r:"Special Illustration Rare"},
+  {n:274,name:"Mega Feraligatr ex",r:"Special Illustration Rare"},
+  {n:275,name:"Mega Froslass ex",r:"Special Illustration Rare"},
+  {n:276,name:"Pikachu ex",r:"Special Illustration Rare"},
+  {n:277,name:"Pikachu ex",r:"Special Illustration Rare"},
+  {n:278,name:"Mega Eelektross ex",r:"Special Illustration Rare"},
+  {n:279,name:"Iono's Bellibolt ex",r:"Special Illustration Rare"},
+  {n:280,name:"Lillie's Clefairy ex",r:"Special Illustration Rare"},
+  {n:281,name:"Team Rocket's Mewtwo ex",r:"Special Illustration Rare"},
+  {n:282,name:"Mega Diancie ex",r:"Special Illustration Rare"},
+  {n:283,name:"Mega Hawlucha ex",r:"Special Illustration Rare"},
+  {n:284,name:"Mega Gengar ex",r:"Special Illustration Rare"},
+  {n:285,name:"Mega Scrafty ex",r:"Special Illustration Rare"},
+  {n:286,name:"N's Zoroark ex",r:"Special Illustration Rare"},
+  {n:287,name:"Marnie's Grimmsnarl ex",r:"Special Illustration Rare"},
+  {n:288,name:"Fezandipiti ex",r:"Special Illustration Rare"},
+  {n:289,name:"Steven's Metagross ex",r:"Special Illustration Rare"},
+  {n:290,name:"Mega Dragonite ex",r:"Special Illustration Rare"},
+  {n:291,name:"Canari",r:"Special Illustration Rare"},
+  {n:292,name:"Iris's Fighting Spirit",r:"Special Illustration Rare"},
+  {n:293,name:"Surfer",r:"Special Illustration Rare"},
+  {n:294,name:"Mega Charizard Y ex",r:"Mega Hyper Rare"},
+  {n:295,name:"Mega Dragonite ex",r:"Mega Hyper Rare"},
+];
+
+const RARITIES=['Alle','Common','Uncommon','Rare','Double Rare','Illustration Rare','Ultra Rare','Mega Attack Rare','Special Illustration Rare','Mega Hyper Rare'];
+const RC={
+  'Special Illustration Rare':{bg:'rgba(100,80,220,0.2)',text:'#a090ff'},
+  'Mega Hyper Rare':{bg:'rgba(232,24,26,0.25)',text:'#ff8080'},
+  'Mega Attack Rare':{bg:'rgba(232,24,26,0.15)',text:'#ff6060'},
+  'Illustration Rare':{bg:'rgba(20,180,120,0.2)',text:'#40d090'},
+  'Ultra Rare':{bg:'rgba(220,160,20,0.15)',text:'#d4a830'},
+  'Double Rare':{bg:'rgba(50,120,220,0.2)',text:'#60a0ff'},
+  'Rare':{bg:'rgba(50,180,80,0.15)',text:'#50c060'},
+  'Uncommon':{bg:'rgba(120,120,140,0.15)',text:'#8888aa'},
+  'Common':{bg:'rgba(70,70,80,0.15)',text:'#555566'},
+};
+
+let curRarity='Alle';
+
+function init(){
+  document.getElementById('pills').innerHTML=RARITIES.map((r,i)=>
+    `<button class="pl-pill${i===0?' on':''}" onclick="setRarity('${r}',this)">${r}</button>`
+  ).join('');
+  doFilter();
+}
+
+function setRarity(r,btn){
+  curRarity=r;
+  document.querySelectorAll('.pl-pill').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  doFilter();
+}
+
+function doFilter(){
+  const q=document.getElementById('search').value.toLowerCase();
+  let list=curRarity==='Alle'?CARDS:CARDS.filter(c=>c.r===curRarity);
+  if(q)list=list.filter(c=>c.name.toLowerCase().includes(q));
+  document.getElementById('count').textContent=list.length+' Karten';
+  if(!list.length){document.getElementById('grid').innerHTML='<div class="pl-empty">Keine Karten gefunden</div>';return;}
+  document.getElementById('grid').innerHTML=list.map(c=>`
+    <div class="pl-card" onclick="showCard(${c.n})">
+      <img src="https://images.scrydex.com/pokemon/me2pt5-${c.n}/small" loading="lazy" alt="${c.name}" onerror="this.style.opacity=0.1">
+      <div class="pl-card-body">
+        <div class="pl-card-name">${c.name}</div>
+        <div class="pl-card-rarity">${c.r}</div>
+        <div class="pl-card-num">#${c.n}/295</div>
+      </div>
+    </div>`).join('');
+}
+
+function showCard(n){
+  const c=CARDS.find(x=>x.n===n);if(!c)return;
+  document.getElementById('m-img').src=`https://images.scrydex.com/pokemon/me2pt5-${c.n}/medium`;
+  document.getElementById('m-name').textContent=c.name;
+  const tag=document.getElementById('m-tag');
+  tag.textContent=c.r;
+  const col=RC[c.r]||{bg:'rgba(70,70,80,0.15)',text:'#888'};
+  tag.style.background=col.bg;tag.style.color=col.text;
+  document.getElementById('m-num').textContent='Karte Nr. '+c.n+' / 295';
+  document.getElementById('modal').classList.add('on');
+}
+
+function closeModal(){document.getElementById('modal').classList.remove('on');}
+init();
+
+function startLoader(){
+  document.getElementById('pl-enter').style.display='none';
+  document.getElementById('pl-loading').style.display='flex';
+
+  const ctx=new(window.AudioContext||window.webkitAudioContext)();
+
+  function beep(freq,start,dur,vol=0.18,type='sine'){
+    const o=ctx.createOscillator();
+    const g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    o.type=type;o.frequency.setValueAtTime(freq,ctx.currentTime+start);
+    g.gain.setValueAtTime(0,ctx.currentTime+start);
+    g.gain.linearRampToValueAtTime(vol,ctx.currentTime+start+0.01);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+start+dur);
+    o.start(ctx.currentTime+start);
+    o.stop(ctx.currentTime+start+dur+0.05);
+  }
+
+  function noise(start,dur,vol=0.06){
+    const buf=ctx.createBuffer(1,ctx.sampleRate*dur,ctx.sampleRate);
+    const d=buf.getChannelData(0);
+    for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1);
+    const src=ctx.createBufferSource();
+    const g=ctx.createGain();
+    const f=ctx.createBiquadFilter();
+    f.type='bandpass';f.frequency.value=1200;f.Q.value=0.8;
+    src.buffer=buf;src.connect(f);f.connect(g);g.connect(ctx.destination);
+    g.gain.setValueAtTime(0,ctx.currentTime+start);
+    g.gain.linearRampToValueAtTime(vol,ctx.currentTime+start+0.01);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+start+dur);
+    src.start(ctx.currentTime+start);
+    src.stop(ctx.currentTime+start+dur+0.05);
+  }
+
+  // Glitch zaps
+  noise(0.0, 0.08, 0.10);
+  beep(180, 0.0, 0.12, 0.10, 'sawtooth');
+  noise(0.15, 0.06, 0.08);
+  beep(320, 0.18, 0.08, 0.08, 'square');
+
+  // Reveal sweep tones
+  beep(220, 0.5, 0.3, 0.12);
+  beep(330, 0.75, 0.25, 0.10);
+  beep(440, 1.0, 0.2, 0.10);
+
+  // Mid glitch burst
+  noise(1.6, 0.05, 0.09);
+  beep(600, 1.62, 0.05, 0.07, 'sawtooth');
+  noise(1.7, 0.04, 0.07);
+
+  // Scan pulses
+  beep(280, 2.2, 0.15, 0.09);
+  beep(280, 2.5, 0.15, 0.09);
+  beep(280, 2.8, 0.15, 0.09);
+
+  // Final power-up chord
+  beep(220, 3.3, 0.5, 0.14);
+  beep(330, 3.35, 0.45, 0.12);
+  beep(550, 3.4, 0.4, 0.10);
+  beep(880, 3.5, 0.35, 0.08);
+  noise(3.3, 0.12, 0.07);
+
+  setTimeout(()=>{document.getElementById('pl-loader').classList.add('hide');},4000);
+}
 </script>
